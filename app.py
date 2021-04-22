@@ -1,24 +1,19 @@
 # Required Imports
-import os
-from flask import Flask
-from flask import Flask, request, jsonify
+from flask import Flask, request, Response, jsonify
+from flask_sqlalchemy import SQLAlchemy
 import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app , storage
-import uuid
-import datetime
+
 
 app = Flask(__name__)
+app.config ['SQLALCHEMY_DATABASE_URI'] = 'mysql://127.0.0.1:3306/platiq'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize Firestore DB
 cred = credentials.Certificate("key.json")
 firebase_admin.initialize_app(cred , {
-    'storageBucket' : 'plate-iq-assignment.appspot.com'
+    'storageBucket' : 'plateiq-69ce3.appspot.com'
 })
-db = firestore.client()
-invoice_ref = db.collection('invoices')
 invoice_storage = storage.bucket()
 
 
 
-if __name__ == '__main__':
-    app.run()
