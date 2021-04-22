@@ -6,5 +6,5 @@ Language-> Python
 Framework-> Flask
 
 Dependencies ->
-Flask
-
+flask
+mysqlclient==2.0.3
